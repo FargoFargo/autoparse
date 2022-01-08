@@ -11,6 +11,7 @@ const scraperObject = {
         await page.waitForSelector('.elapsed');
         let elapsed = await page.$eval('.elapsed', text => text.textContent);
         console.log("Elapsed is " + elapsed);
+        await page.waitForSelector('body');
         let d = await page.$eval('body', text => {
             body = text.textContent;
             return body;

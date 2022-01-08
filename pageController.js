@@ -6,7 +6,7 @@ async function scrapeAll(browserInstance){
         const axios = require('axios')
         const schedule = await axios.post('https://understat.com/cp/getMatchesForParse')
         const matches = schedule.data.response.matches.filter((a) => a.status == -1)
-        console.log("Load matches......");
+        console.log("Load matches......")
         for (var i in matches) {
             const now = (new Date()).getTime()
             const timezoneOffset = -(new Date()).getTimezoneOffset() / 60	
