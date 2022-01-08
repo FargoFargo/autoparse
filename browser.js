@@ -5,10 +5,19 @@ async function startBrowser(){
     try {
         console.log("Opening the browser......");
         browser = await puppeteer.launch({
-            headless: false,
-            //timeout: 0,
-            args: ["--disable-setuid-sandbox", '--no-sandbox'],
-            'ignoreHTTPSErrors': true
+            args: [
+                '--no-sandbox',
+                '--disable-setuid-sandbox',
+                '--disable-dev-shm-usage',
+                '--disable-accelerated-2d-canvas',
+                '--no-first-run',
+                '--no-zygote',
+                //'--single-process',
+                '--disable-gpu',
+                '--lang=en-US;q=0.5,en;q=0.3'
+            ],
+            //executablePath: "./node_modules/puppeteer/.local-chromium/linux-686378/chrome-linux/chrome",
+            headless: true
         });
     } catch (err) {
         console.log("Could not create a browser instance => : ", err);
