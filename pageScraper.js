@@ -10,6 +10,8 @@ const scraperObject = {
         console.log(`Navigating to ${url2}...`);
         await page.goto(url2);*/
         const page = await init_page(browser);
+		await page.setDefaultNavigationTimeout(0);
+		const navigationPromise = page.waitForNavigation({waitUntil: "domcontentloaded"});
 		let response = await page.goto(url2);
 
         await page.waitForSelector('.elapsed');
